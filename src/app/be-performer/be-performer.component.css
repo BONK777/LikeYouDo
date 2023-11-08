@@ -1,0 +1,126 @@
+main {
+    width: 100%;
+	height: 100vh;
+	background-image: url(../../assets/pic/performer.jpg);
+	background-size: cover;
+	background-position: center;
+	background-attachment: fixed;
+	display: flex;
+	justify-content: space-evenly;
+	-ms-align-items: center;
+	align-items: flex-start;
+	position: relative;
+	/* z-index: -1; */
+    flex-direction: column;
+    padding: 0 0 0 60px;
+
+}
+
+main:after {
+	content: '';
+	background: rgba(0,0,0,0.7);
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	height: 100%;
+	width: 60%;
+	z-index: 0;
+} 
+
+
+.landing__box {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 700px;
+    gap: 20px;
+    z-index: 1;
+  }
+
+h1, p {
+color: #fff;
+}
+h1 {
+font-size: 5rem;
+font-weight: 400;
+margin: 0;
+}
+h2{
+    font-size: 3.5rem;
+    margin: 0;
+    font-weight: 400;
+}
+p {
+font-size: 1.5rem;
+margin: 0;
+}
+.more {
+border: none;
+width: 200px;
+height: 50px;
+background-color: #fff;
+border-radius: 1px;
+font-size: 1.25rem;
+color: #333;
+transition: .3s;
+cursor: pointer;
+z-index: 1;
+}
+.more:hover {
+background-color: #bababa;
+}
+
+@media only screen and (max-width : 400px) {
+    main {
+        padding: 0 0 0 40px;
+    }
+
+    main:after {
+        width: 100%;
+    }
+
+    .landing__box {
+        width: 70%;
+    }
+
+    h1 {
+        font-size: 3rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    p {
+        font-size: 1rem;
+    }
+}
+
+@media only screen and (max-width : 455px) {
+    main {
+        padding: 0 0 0 40px;
+    }
+
+    main:after {
+        width: 100%;
+    }
+
+    .landing__box {
+        width: 70%;
+    }
+
+    h1 {
+        font-size: 3rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    p {
+        font-size: 1rem;
+    }
+}

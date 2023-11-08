@@ -1,0 +1,88 @@
+main {
+	width: 100%;
+	height: 100vh;
+    background-color: #0C0712;
+	background-size: cover;
+	background-position: center;
+	background-attachment: fixed;
+	display: flex;
+	justify-content: center;
+	-ms-align-items: center;
+	align-items: center;
+	position: relative;
+    gap: 50px;
+    flex-direction: column;
+}
+
+.feedback-title {
+	z-index: 1;
+	font-size: 5vw;
+	color: white;
+    margin: 0;
+}
+
+.selector {
+    display: flex;
+    gap: 50px;
+}
+
+.select {
+    /* width: 250px;
+    height: 150px; */
+    width: 200px;
+    height: 125px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 24px;
+    border: none;
+    outline: none;
+    -webkit-appearance: none;
+    transition: .3s;
+}
+
+.btn-1 {
+    background-color: hsl(200, 100%, 50%);
+}
+
+.btn-1:hover {
+    border: 10px solid hsl(200, 100%, 17%);
+}
+
+.btn-2 {
+    background-color: #EF3932;
+}
+
+.btn-2:hover {
+    border: 10px solid #6C0000;
+}
+
+.btn-3 {
+    background-color: #B5A515;
+}
+
+.btn-3:hover {
+    border: 10px solid #484100;
+}
+
+@media only screen and (max-width : 400px) {
+    .feedback-title {
+        font-size: 7vw;
+    }
+
+    .selector {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
+@media only screen and (max-width : 450px) {
+    .selector {
+        flex-direction: column;
+    }
+}
+
+@media only screen and (max-width : 540px) {
+    .selector {
+        flex-direction: column;
+    }
+}

@@ -1,0 +1,75 @@
+<main>
+  <header>
+    <h1 id="title">Как вас представить клиентам?</h1>
+  </header>
+  <section>
+    <form id="survey-form">
+      <div class="form-group">
+        <label id="name-label">Ваш город</label>
+        <input
+          type="text"
+          placeholder="Напишите ваш город"
+          class="form-control"
+          id="city"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label id="email-label">Имя</label>
+        <input
+          type="text"
+          placeholder="Напишите свое имя"
+          class="form-control"
+          id="name"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label id="number-label">Фамилия</label>
+        <input
+          type="text"
+          placeholder="Напишите свою фамилию"
+          class="form-control"
+          id="lastName"
+        />
+      </div>
+      <div class="form-group">
+        <label id="number-label">Дата рождения</label>
+        <input
+          type="number"
+          placeholder="Напишите свою дату рождения"
+          class="form-control"
+          id="birthday"
+        />
+      </div>
+      <div class="form-group">
+        <p style="color: #A9D4FD; font-size: 12px;">Для того, чтобы мы (только платформа) могли с вами душе познакомиться, в каких социальных сетях мы можем найти вас?</p>
+      </div>
+      <div class="form-group">
+        <label id="number-label">Введите ссылку на соц. сеть</label>
+        <input
+          type="link"
+          placeholder="Вставьте ссылку на вашу соц. сеть"
+          class="form-control"
+          id="link"
+        />
+      </div>
+      <div class="form-group">
+        <label id="number-label">Введите ссылку на соц. сеть</label>
+        <input
+          type="link"
+          placeholder="Вставьте ссылку на вашу соц. сеть"
+          class="form-control"
+          id="link"
+        />
+      </div>
+      <div class="form-group">
+        <p>Какие-либо комментарии или выделения о себе</p>
+        <textarea class="form-control"></textarea>
+      </div>
+      <div class="form-group">
+        <button id="submit" class="submit"><a routerLink="/callback">Далее</a></button>
+      </div>
+    </form>
+  </section>
+</main>
