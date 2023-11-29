@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import {HttpClientModule} from '@angular/common/http'
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { RouterModule, Routes } from '@angular/router';
@@ -17,6 +17,12 @@ import { CreateAvatatComponent } from './create-avatat/create-avatat.component';
 import { SkillsComponent } from './skills/skills.component';
 import { SubskillsComponent } from './subskills/subskills.component';
 import { ProfileComponent } from './profile/profile.component';
+import { ErrComponent } from './404/404.component';
+import { DataCategoryComponent } from './data-category/data-category.component';
+import { DataSubCategoryComponent } from './data-subCategory/data-subCategory.component';
+import { DataService } from './services/data.service';
+import { FormsModule } from '@angular/forms';
+import { TaskComponent } from './task/task.component';
 
 
 const routes: Routes = [
@@ -32,11 +38,14 @@ const routes: Routes = [
   {path: "avatar", component: CreateAvatatComponent},
   {path: "skills", component: SkillsComponent},
   {path: "subskills", component: SubskillsComponent},
-  {path: "profile", component: ProfileComponent}
+  {path: "profile", component: ProfileComponent},
+  {path: "data-category", component: DataCategoryComponent},
+  {path: "data-category/:categoryId/sub-categories", component: DataSubCategoryComponent},
+  {path: "**", component: ErrComponent}
 ]
 
 @NgModule({
-  declarations: [														
+  declarations: [																			
     AppComponent,
       HomeComponent,
       CategoryComponent,
@@ -51,14 +60,20 @@ const routes: Routes = [
       CreateAvatatComponent,
       SkillsComponent,
       SubskillsComponent,
-      ProfileComponent
+      ProfileComponent,
+      ErrComponent,
+      DataCategoryComponent,
+      DataSubCategoryComponent,
+      TaskComponent
    ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),
-    RouterModule
+    RouterModule,
+    HttpClientModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

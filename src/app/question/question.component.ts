@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { DataService } from '../services/data.service';
+import { FormsModule } from '@angular/forms';
+
 
 @Component({
   selector: 'app-question',
@@ -7,9 +11,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class QuestionComponent implements OnInit {
 
-  constructor() { }
+  description: string = '';
+
+  constructor(private dataService: DataService, private router: Router) {}
 
   ngOnInit() {
   }
 
+  submitForm(): void {
+    // Вызываем метод сервиса для сохранения данных
+    this.dataService.setDescription(this.description);
+    console.log('Final Task Object:', this.dataService.getTask());
+
+    // Можно добавить другие действия или перенаправление, если необходимо
+  }
 }

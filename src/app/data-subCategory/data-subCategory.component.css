@@ -1,0 +1,34 @@
+/* category-list.component.css */
+
+.sub-category-list-container {
+    background-color: #001f3f; /* Темно-синий фон */
+    color: #ffffff; /* Белый текст */
+    padding: 20px; /* Внутренний отступ */
+    border-radius: 10px; /* Закругленные углы */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Тень */
+  }
+  
+  ul {
+    list-style-type: none; /* Убираем маркеры списка */
+    padding: 0; /* Убираем внутренний отступ списка */
+  }
+  
+  li {
+    margin-bottom: 10px; /* Отступ между элементами списка */
+  }
+  
+  /* Стили для ссылок внутри списка */
+  li a {
+    color: #42a5f5; /* Ярко-синий цвет для ссылок */
+    text-decoration: none; /* Убираем подчеркивание ссылок */
+    transition: color 0.3s ease; /* Плавный переход цвета */
+  }
+  
+  li a:hover {
+    color: #64b5f6; /* Цвет при наведении на ссылку */
+  }
+  
+
+p {
+    color: #000;
+}

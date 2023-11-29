@@ -1,0 +1,12 @@
+<div class="category-list-container" *ngIf="categories.length > 0; else noCategories">
+  <h2>Categories:</h2>
+  <ul>
+    <li *ngFor="let category of categories">
+      <a [routerLink]="['/data-category', category.id, 'sub-categories']" class="category-link">{{ category.attributes.name }}</a>
+    </li>
+  </ul>
+</div>
+
+<ng-template #noCategories>
+  <p>No categories available.</p>
+</ng-template>

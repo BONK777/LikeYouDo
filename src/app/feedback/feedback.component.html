@@ -1,8 +1,8 @@
 <main>
   <h1 class="feedback-title">Когда вам нужен ответ?</h1>
   <div class="selector">
-    <button class="select btn-1"><a routerLink="/type-feedback">Не срочно</a></button>
-    <button class="select btn-2"><a routerLink="/type-feedback">Срочно</a></button>
-    <button class="select btn-3"><a routerLink="/type-feedback">В течении дня</a></button>
+    <button class="select btn-1" (click)="selectTime('Не срочно')" routerLink="/type-feedback">Не срочно</button>
+    <button class="select btn-2" (click)="selectTime('Срочно')" routerLink="/type-feedback">Срочно</button>
+    <button class="select btn-3" (click)="selectTime('В течение дня')" routerLink="/type-feedback">В течении дня</button>
   </div>
 </main>

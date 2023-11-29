@@ -1,0 +1,5 @@
+<div class="sub-category-list-container" *ngFor="let subCategory of subCategories">
+  <div class="sub-category-card">
+    <a class="category-link" routerLink="/question" (click)="selectSubcategory(subCategory)">{{ subCategory.attributes.name }}</a>
+  </div>
+</div>
