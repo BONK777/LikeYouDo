@@ -8,7 +8,7 @@ import { map } from "rxjs/operators";
   providedIn: 'root',
 })
 export class CategoryService {
-  private apiUrl = 'http://localhost:1337/api/';
+  private apiUrl = 'https://1362-95-64-216-26.ngrok-free.app/api/';
 
   constructor(private http: HttpClient) { }
 
