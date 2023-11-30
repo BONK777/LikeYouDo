@@ -12,21 +12,21 @@ export class CategoryService {
 
   constructor(private http: HttpClient) { }
 
-  private headersWithToken(): HttpHeaders {
-    const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzAxMTY5NzMxLCJleHAiOjE3MDM3NjE3MzF9.DLHELqfCd0As_pJHKF-dbkzu2zHXJEt_mYu3a1LVlMk';
+  // private headersWithToken(): HttpHeaders {
+  //   const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzAxMTY5NzMxLCJleHAiOjE3MDM3NjE3MzF9.DLHELqfCd0As_pJHKF-dbkzu2zHXJEt_mYu3a1LVlMk';
 
-    return new HttpHeaders({
-      Authorization: `Bearer ${token}`,
-    });
-  }
+  //   return new HttpHeaders({
+  //     Authorization: `Bearer ${token}`,
+  //   });
+  // }
 
   getCategories(): Observable<any> {
-    const headers = this.headersWithToken();
+    // const headers = this.headersWithToken();
     return this.http.get(`${this.apiUrl}categories`, { headers });
   } // категории
 
   getSubCategories(categoryId?: number): any[] {
-    const headers = this.headersWithToken();
+    // const headers = this.headersWithToken();
     const url = `${this.apiUrl}sub-categories?populate=*`;
     const json = this.http.get<any>(url, { headers });
     const resItems: any = []
