@@ -22,13 +22,13 @@ export class CategoryService {
 
   getCategories(): Observable<any> {
     // const headers = this.headersWithToken();
-    return this.http.get(`${this.apiUrl}categories`, { headers });
+    return this.http.get(`${this.apiUrl}categories`);
   } // категории
 
   getSubCategories(categoryId?: number): any[] {
     // const headers = this.headersWithToken();
     const url = `${this.apiUrl}sub-categories?populate=*`;
-    const json = this.http.get<any>(url, { headers });
+    const json = this.http.get<any>(url);
     const resItems: any = []
     json.pipe(map((items: any) => {
       console.log(items.data);
