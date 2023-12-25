@@ -33,4 +33,21 @@ export class TypeFeedbackComponent implements OnInit {
 
   }
 
+  saveAndCheckTask(): void {
+    // Вызываем метод сохранения в базу данных
+    this.dataService.saveTaskToDatabase().subscribe(
+      (response) => {
+        console.log('Task saved successfully:', response);
+
+        // Проверяем, что объект сохранился, например, выводим его в консоль
+        const savedTask = this.dataService.getTask();
+        console.log('Saved Task:', savedTask);
+      },
+      (error) => {
+        console.error('Error saving task:', error);
+        // Обработка ошибки при сохранении
+      }
+    );
+  }
+
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CategoryService } from '../services/custome.interceptor';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private categoryService: CategoryService) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
+    // this.categoryService.postAuthLocal().subscribe(
+    //   (response) => {
+    //     console.log('Успешный POST-запрос', response);
+    //   },
+    //   (error) => {
+    //     console.error('Ошибка POST-запроса', error);
+    //   }
+    // );
   }
 
 }
