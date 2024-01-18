@@ -73,7 +73,7 @@ h1 {
     border: none;
     cursor: pointer;
     height: 25px;
-    border-radius: 0 0 9px 9px;
+    border-radius: 0 0 10px 10px;
 }
 
 @media only screen and (max-width : 400px)  {
