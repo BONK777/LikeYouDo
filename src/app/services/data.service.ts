@@ -10,8 +10,8 @@ import { Observable } from 'rxjs';
 })
 export class DataService {
 
-  private apiUrl = 'https://81b4-2a00-1370-8176-1af9-2c1f-9068-3579-4043.ngrok-free.app/api';
-  // private apiUrl = 'http://1362-95-64-216-26.ngrok-free.app/api/';
+  // private apiUrl = 'https://81b4-2a00-1370-8176-1af9-2c1f-9068-3579-4043.ngrok-free.app/api';
+  private apiUrl = 'http://localhost:1337/api/';
 
   constructor(private http: HttpClient) { }
 

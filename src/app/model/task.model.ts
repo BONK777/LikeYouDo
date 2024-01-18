@@ -1,19 +1,19 @@
 // models/task.model.ts
 export interface Task {
-    id: number; // <-- изменено на string
+    id: number; 
     attributes: {
       description: string;
       term: {
-        id: number; // <-- изменено на string
+        id: number; 
         term: string;
       };
       answerFormat: {
-        id: number; // <-- изменено на string
+        id: number; 
         format: string;
       };
       subCategory: {
         data: {
-          id: number; // <-- изменено на string
+          id: number;
           attributes: {
             name: string;
           };
