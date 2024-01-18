@@ -65,7 +65,8 @@ h1 {
 
 .btn-card {
     width: 150px;
-    background-color: #A9D4FD; 
+    background-color: #1b1b32cc;
+    color: #fff;
     /* background-color: #6D6DB8;  */
     /* color: #fff; */
     outline: none;
