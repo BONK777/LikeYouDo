@@ -23,6 +23,8 @@ import { DataSubCategoryComponent } from './data-subCategory/data-subCategory.co
 import { DataService } from './services/data.service';
 import { FormsModule } from '@angular/forms';
 import { TaskComponent } from './task/task.component';
+import { SelectPerformerComponent } from './select-performer/select-performer.component';
+import { ChatComponent } from './chat/chat.component';
 
 
 const routes: Routes = [
@@ -41,11 +43,13 @@ const routes: Routes = [
   {path: "profile", component: ProfileComponent},
   {path: "data-category", component: DataCategoryComponent},
   {path: "data-category/:categoryId/sub-categories", component: DataSubCategoryComponent},
+  {path: "select-performer", component: SelectPerformerComponent},
+  {path: "chat", component: ChatComponent},
   {path: "**", component: ErrComponent}
 ]
 
 @NgModule({
-  declarations: [																			
+  declarations: [																					
     AppComponent,
       HomeComponent,
       CategoryComponent,
@@ -64,7 +68,9 @@ const routes: Routes = [
       ErrComponent,
       DataCategoryComponent,
       DataSubCategoryComponent,
-      TaskComponent
+      TaskComponent,
+      SelectPerformerComponent,
+      ChatComponent
    ],
   imports: [
     BrowserModule,
