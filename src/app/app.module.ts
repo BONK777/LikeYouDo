@@ -24,32 +24,41 @@ import { DataService } from './services/data.service';
 import { FormsModule } from '@angular/forms';
 import { TaskComponent } from './task/task.component';
 import { SelectPerformerComponent } from './select-performer/select-performer.component';
-import { ChatComponent } from './chat/chat.component';
+import { OrderComponent } from './order/order.component';
+import { AuthForClientComponent } from './auth-for-client/auth-for-client.component';
+import { AuthForPerformerComponent } from './auth-for-performer/auth-for-performer.component';
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 
 const routes: Routes = [
   {path: "home", component: HomeComponent},
+  {path: "auth-client", component: AuthForClientComponent},
+  {path: "auth-performer", component: AuthForPerformerComponent},
   {path: "category", component: CategoryComponent},
-  {path: "subcategory", component: SubcategoryComponent},
+  // {path: "subcategory", component: SubcategoryComponent},
   {path: "question", component: QuestionComponent},
   {path: "feedback", component: FeedbackComponent},
   {path: "type-feedback", component: TypeFeedbackComponent},
   {path: "be-performer", component: BePerformerComponent},
-  {path: "register", component: RegisterComponent},
-  {path: "callback", component: CallbackComponent},
-  {path: "avatar", component: CreateAvatatComponent},
-  {path: "skills", component: SkillsComponent},
-  {path: "subskills", component: SubskillsComponent},
+  // {path: "register", component: RegisterComponent},
+  // {path: "callback", component: CallbackComponent},
+  // {path: "avatar", component: CreateAvatatComponent},
+  // {path: "skills", component: SkillsComponent},
+  // {path: "subskills", component: SubskillsComponent},
   {path: "profile", component: ProfileComponent},
   {path: "data-category", component: DataCategoryComponent},
-  {path: "data-category/:categoryId/sub-categories", component: DataSubCategoryComponent},
+  // {path: "data-subсategory", component: DataSubCategoryComponent },
+  { path: 'data-subcategory/:id', component: DataSubCategoryComponent},
+  // {path: "subcategory?id={subcategoryId}", component: DataSubCategoryComponent},
   {path: "select-performer", component: SelectPerformerComponent},
-  {path: "chat", component: ChatComponent},
+  {path: "order", component: OrderComponent},
   {path: "**", component: ErrComponent}
+  // { path: '', redirectTo: '/categories', pathMatch: 'full' }
 ]
 
 @NgModule({
-  declarations: [																					
+  declarations: [																										
     AppComponent,
       HomeComponent,
       CategoryComponent,
@@ -70,14 +79,17 @@ const routes: Routes = [
       DataSubCategoryComponent,
       TaskComponent,
       SelectPerformerComponent,
-      ChatComponent
+      OrderComponent,
+      AuthForClientComponent,
+      AuthForPerformerComponent
    ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),
     RouterModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [DataService],
   bootstrap: [AppComponent]

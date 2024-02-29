@@ -3,21 +3,21 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { ChatComponent } from './chat.component';
+import { AuthForPerformerComponent } from './auth-for-performer.component';
 
-describe('ChatComponent', () => {
-  let component: ChatComponent;
-  let fixture: ComponentFixture<ChatComponent>;
+describe('AuthForPerformerComponent', () => {
+  let component: AuthForPerformerComponent;
+  let fixture: ComponentFixture<AuthForPerformerComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ChatComponent ]
+      declarations: [ AuthForPerformerComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ChatComponent);
+    fixture = TestBed.createComponent(AuthForPerformerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

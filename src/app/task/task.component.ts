@@ -1,16 +1,16 @@
 // task.component.ts
-import { Component } from '@angular/core';
+import { Component, Input  } from '@angular/core';
 import { DataService } from '../services/data.service';
 import { Task } from '../model/task.model';
 
 @Component({
   selector: 'app-task',
   template: `
-    <div class="task-card">
-      <h2>{{ taskData?.attributes?.description }}</h2>
-      <p><strong>Subcategory:</strong> {{ taskData?.attributes?.subCategory?.data?.attributes?.name }}</p>
-      <p><strong>Answer Format:</strong> {{ taskData?.attributes?.answerFormat?.format }}</p>
-      <p><strong>Term:</strong> {{ taskData?.attributes?.term?.term }}</p>
+  <div class="task-card">
+      <h2>{{ task?.data?.Description }}</h2>
+      <p><strong>Subcategory:</strong> {{ task?.data?.Subcategory?.data?.attributes?.name }}</p>
+      <p><strong>Answer Format:</strong> {{ task?.data?.AnswerFormat }}</p>
+      <p><strong>Term:</strong> {{ task?.data?.Term }}</p>
     </div>
   `,
   styles: [`
@@ -29,9 +29,25 @@ import { Task } from '../model/task.model';
   `],
 })
 export class TaskComponent {
-  taskData: Task;
+  tasks: any[] = [];
+  @Input() task: any;
 
-  constructor(private dataService: DataService) {
-    this.taskData = this.dataService.getTask();
+
+  constructor(private dataService: DataService) {}
+
+  ngOnInit(): void {
+    this.loadTasks();
+  }
+
+  loadTasks() {
+    this.dataService.getTasks().subscribe(
+      (tasks) => {
+        console.log('Полученные задачи с сервера:', tasks);
+        this.tasks = tasks.map(task => task.data);
+      },
+      (error) => {
+        console.error('Ошибка при получении задач:', error);
+      }
+    );
   }
 }

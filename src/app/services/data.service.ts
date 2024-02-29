@@ -3,68 +3,111 @@ import { Injectable } from '@angular/core';
 import { Task } from '../model/task.model'
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
+
 
 
 @Injectable({
   providedIn: 'root',
 })
 export class DataService {
+  loadSubcategories(arg0: string) {
+    throw new Error('Method not implemented.');
+  }
 
-  // private apiUrl = 'https://81b4-2a00-1370-8176-1af9-2c1f-9068-3579-4043.ngrok-free.app/api';
-  private apiUrl = 'http://localhost:1337/api/';
+  private apiUrl = 'https://maraton.builtwithdark.com';
 
   constructor(private http: HttpClient) { }
 
-  private headersWithToken(): HttpHeaders {
-    const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzAxMTY5NzMxLCJleHAiOjE3MDM3NjE3MzF9.DLHELqfCd0As_pJHKF-dbkzu2zHXJEt_mYu3a1LVlMk';
+    private selectedTaskSubject = new BehaviorSubject<Task | null>(null);
+    public selectedTask$ = this.selectedTaskSubject.asObservable();
 
-    return new HttpHeaders({
-      Authorization: `Bearer ${token}`,
-    });
-  }
+    private performerDataSubject = new BehaviorSubject<{ name: string, contacts: string } | null>(null);
+    public performerData$ = this.performerDataSubject.asObservable();
 
-  [x: string]: any;
-    private taskData: Task = {
-        id: 0,
-        attributes: {
-          description: '',
-          term: { id: 0, term: '' },
-          answerFormat: { id: 0, format: '' },
-          subCategory: { data: { id: 0, attributes: { name: '' } } },
-        },
-      };
+    private selectedSubcategorySubject = new BehaviorSubject<any | null>(null);
+    public selectedSubcategory$ = this.selectedSubcategorySubject.asObservable();
 
-      getTask(): Task {
-        return this.taskData;
+    private accessKey: string = '';
+
+    private selectedSubcategory: any | null = null;
+
+    private selectedTermSource = new BehaviorSubject<string | null>(null);
+
+    private selectedTermSubject = new BehaviorSubject<string | null>(null);
+    selectedTerm$ = this.selectedTermSource.asObservable();
+
+    private selectedTypeSubject = new BehaviorSubject<string | null>(null);
+    selectedType$ = this.selectedTypeSubject.asObservable();
+
+      setSelectedType(type: string) {
+        this.selectedTypeSubject.next(type);
       }
 
-      setTask(task: Task): void {
-        this.taskData = task;
-      }
-      
-      setDescription(description: string): void {
-        this.taskData.attributes.description = description;
+      setSelectedTerm(term: string) {
+        this.selectedTermSubject.next(term);
       }
 
-      setSubCategory(subCategoryId: number, subCategoryName: string): void {
-        this.taskData.attributes.subCategory.data.id = subCategoryId;
-        this.taskData.attributes.subCategory.data.attributes.name = subCategoryName;
+      setSelectedSubcategory(subcategory: any) {
+        this.selectedSubcategory = subcategory;
       }
 
-      setAnswerFormat(formatId: number, formatValue: string): void {
-        this.taskData.attributes.answerFormat.id = formatId;
-        this.taskData.attributes.answerFormat.format = formatValue;
+      getSelectedSubcategory(): any | null {
+        return this.selectedSubcategory;
       }
 
-      setTerm(termId: number, termValue: string): void {
-        this.taskData.attributes.term.id = termId;
-        this.taskData.attributes.term.term = termValue;
+      registerClient(data: {name: string, contacts: string }): Observable<any> {
+        console.log('Данные перед отправкой:', data);
+        return this.http.post(`${this.apiUrl}/client`, data);
+      }
+    
+      setPerformerData(data: { name: string, contacts: string }) {
+        this.performerDataSubject.next(data);
+      } 
+
+      registerPerformer(data: { name: string, contacts: string }): Observable<any> {
+        console.log('Данные перед отправкой:', data);
+        return this.http.post(`${this.apiUrl}/performer`, data);
       }
 
-      saveTaskToDatabase(): Observable<Task> {
-        const headers = this.headersWithToken();
-        console.log('Записанный таск:', this.taskData); // Выводим в консоль записанный таск
-        return this.http.post<Task>(`${this.apiUrl}/tasks`, this.taskData, { headers });
+      getCategories(): Observable<any[]> {
+        return this.http.get<any[]>(`${this.apiUrl}/categories`);
+      }
+    
+      getSubcategories(categoryId: string): Observable<any[]> {
+        return this.http.get<any[]>(`${this.apiUrl}/category?id=${categoryId}`);
       }
 
-}
+      setSelectedTask(task: Task) {
+        this.selectedTaskSubject.next(task);
+      }
+    
+      getSelectedTask(): Observable<Task | null> {
+        return this.selectedTask$;
+      }
+
+      setAccessKey(key: string): void {
+        this.accessKey = key;
+      }
+
+      getAccessKey(): string {
+        return this.accessKey;
+      }
+
+      saveTaskToDatabase(task: Task): Observable<Task> {
+        // const authToken = this.getAccessKey();
+        const authToken = "gUIop2-Ze7Q7l-mmIvXe";
+
+        const headers = new HttpHeaders().set('Authorization', authToken);
+
+        const options = { headers: headers };
+
+        console.log('отправляем:', task);
+
+        return this.http.post<Task>(`${this.apiUrl}/task`, task, options);
+      }
+
+      getTasks(): Observable<any[]> {
+        return this.http.get<any[]>(`${this.apiUrl}/tasks`);
+      }
+    }

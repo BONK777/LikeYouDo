@@ -1,53 +1,57 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component } from '@angular/core';
 import { DataService } from '../services/data.service';
+import { Router } from '@angular/router';
 import { Task } from '../model/task.model';
-
 
 @Component({
   selector: 'app-type-feedback',
   templateUrl: './type-feedback.component.html',
   styleUrls: ['./type-feedback.component.css']
 })
-export class TypeFeedbackComponent implements OnInit {
-
+export class TypeFeedbackComponent {
   constructor(private dataService: DataService, private router: Router) {}
 
-  ngOnInit() {
-  }
+  // onSelectType(type: string) {
+  //   this.dataService.getSelectedTask().subscribe((currentTask) => {
+  //     if (currentTask) {
+  //       if (currentTask.answerFormat !== type) {
+  //         currentTask.answerFormat = type;
 
-  selectAnswerFormat(answerFormat: string): void {
-    // Получаем текущий объект таска
-    const currentTask: Task = this.dataService.getTask();
+  //         console.log('Обновленный Task (после выбора типа):', currentTask);
 
-    // Добавляем выбранный формат ответа в объект таска
-    currentTask.attributes.answerFormat = {
-      id: 1, // Пример ID для формата ответа (может быть необходимо использовать реальные данные)
-      format: answerFormat,
-    };
+  //         this.dataService.setSelectedTask(currentTask);
 
-    // Сохраняем обновленный объект таска в сервисе данных
-    this.dataService.setTask(currentTask);
-    console.log('ПРОВЕРКА answer-format', this.dataService.getTask());
-    console.log('КОНЕЧНЫЙ ТАСК', this.dataService.getTask());
+  //         this.router.navigate(['/order']);
+  //       }
+  //     } else {
+  //       console.warn('Текущая задача не определена');
+  //     }
+  //   });
+  // }
 
-  }
-
-  saveAndCheckTask(): void {
-    // Вызываем метод сохранения в базу данных
-    this.dataService.saveTaskToDatabase().subscribe(
-      (response) => {
-        console.log('Task saved successfully:', response);
-
-        // Проверяем, что объект сохранился, например, выводим его в консоль
-        const savedTask = this.dataService.getTask();
-        console.log('Saved Task:', savedTask);
-      },
-      (error) => {
-        console.error('Error saving task:', error);
-        // Обработка ошибки при сохранении
+  onSelectType(type: string) {
+    this.dataService.getSelectedTask().subscribe((currentTask) => {
+      if (currentTask) {
+        if (currentTask.answerFormat !== type) {
+          currentTask.answerFormat = type;
+  
+          console.log('Обновленный Task (после выбора типа):', currentTask);
+  
+          this.dataService.saveTaskToDatabase(currentTask).subscribe(
+            (savedTask) => {
+              console.log('Задача успешно сохранена:', savedTask);
+            },
+            (error) => {
+              console.error('Ошибка при сохранении задачи:', error);
+            }
+          );
+  
+          this.router.navigate(['/order']);
+        }
+      } else {
+        console.warn('Текущая задача не определена');
       }
-    );
-  }
+    });
+}
 
 }

@@ -1,8 +1,9 @@
+// question.component.ts
+
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Task } from '../model/task.model';
 import { DataService } from '../services/data.service';
-import { FormsModule } from '@angular/forms';
-
 
 @Component({
   selector: 'app-question',
@@ -10,19 +11,22 @@ import { FormsModule } from '@angular/forms';
   styleUrls: ['./question.component.css']
 })
 export class QuestionComponent implements OnInit {
+  task: Task = { description: '', answerFormat: '', subcategory: '', term: '' };
 
-  description: string = '';
+  constructor(private dataService: DataService, private router: Router) { }
 
-  constructor(private dataService: DataService, private router: Router) {}
-
-  ngOnInit() {
+  ngOnInit(): void {
+    const savedSubcategory = this.dataService.getSelectedSubcategory();
+    if (savedSubcategory) {
+      this.task.subcategory = savedSubcategory.name;
+    }
   }
 
-  submitForm(): void {
-    // Вызываем метод сервиса для сохранения данных
-    this.dataService.setDescription(this.description);
-    console.log('Final Task Object:', this.dataService.getTask());
+  onSubmit() {
+    this.dataService.setSelectedSubcategory(null);
+    this.dataService.setSelectedTask(this.task);
+    this.router.navigate(['/feedback']);
 
-    // Можно добавить другие действия или перенаправление, если необходимо
+    console.log('Обновленная задача:', this.task);
   }
 }

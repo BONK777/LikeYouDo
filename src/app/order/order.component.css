@@ -1,0 +1,105 @@
+main {
+	width: 100%;
+	height: 100vh;
+    background-color: #0C0712;
+	background-size: cover;
+	background-position: center;
+	background-attachment: fixed;
+	display: flex;
+	justify-content: center;
+	-ms-align-items: center;
+	align-items: center;
+	position: relative;
+    gap: 50px;
+    flex-direction: column;
+}
+
+.order-details {
+    background-color: #1f1f1f;
+    color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 20px;
+
+  }
+  
+  .order-details:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+  }
+  
+  h2 {
+    color: #3498db;
+  }
+  
+  .performer-info {
+    margin-top: 20px;
+  }
+  
+  button {
+    background-color: #3498db;
+    color: #ffffff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+    
+  }
+  
+  button:hover {
+    background-color: #2980b9;
+  }
+  
+  .status-selector {
+    margin-top: 20px;
+  }
+  
+  label {
+    color: #3498db;
+  }
+  
+  select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #3498db;
+    border-radius: 5px;
+    color: #3498db;
+    background-color: #2c3e50;
+    transition: border 0.3s ease-in-out;
+  }
+  
+  select:hover,
+  select:focus {
+    border: 1px solid #2980b9;
+  }
+  
+  /* Стили для различных статусов */
+  .status-marker {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 10px;
+  }
+  
+  .status-pending .status-marker {
+    background-color: #f39c12; /* Цвет для статуса "В ожидании принятия" */
+  }
+  
+  .status-accepted .status-marker {
+    background-color: #27ae60; /* Цвет для статуса "Принят исполнителем" */
+  }
+  
+  .status-completed .status-marker {
+    background-color: #3498db; /* Цвет для статуса "Выполнен исполнителем" */
+  }
+  
+  .status-rejected .status-marker {
+    background-color: #e74c3c; /* Цвет для статуса "Отказан исполнителем" */
+  }

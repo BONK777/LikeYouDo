@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { CategoryService } from '../services/custome.interceptor';
-import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-data-category',
@@ -8,36 +8,37 @@ import { DataService } from '../services/data.service';
   styleUrls: ['./data-category.component.css']
 })
 export class DataCategoryComponent implements OnInit {
-
   categories: any[] = [];
-  
 
-  constructor(private categoryService: CategoryService, private dataService: DataService) {}
-
-  // async fetch() {
-  //   const response = await fetch(' https://e160-95-64-216-26.ngrok-free.app/api/categories?populate=*', {
-  //     method: 'GET',
-  //     headers: {
-  //       "ngrok-skip-browser-warning": "69420"
-  //     }
-  //   });
-  //   const categories = await response.json();
-  //   console.log(categories);
-  //   return categories
-  // }
+  constructor(private categoryService: CategoryService, private router: Router) {}
 
   ngOnInit() {
-    this.categoryService.getCategories().subscribe((response) => {
-      console.log(response);
-      this.categories = response.data;
-    });
-
-    // this.fetch()
-
+    this.categoryService.getCategories().subscribe(
+      (response) => {
+        if (Array.isArray(response)) {
+          this.categories = response;
+          console.log('GOOD');
+          
+        } else {
+          console.error("Invalid response format. Expected an array.");
+        }
+      },
+      (error) => {
+        console.error("Error fetching categories:", error);
+      }
+    );
   }
 
-  
+  showSubcategories(categoryId: string) {
+    this.categoryService.getSubcategories(categoryId).subscribe(
+      (response) => {
+        this.router.navigate([`/data-subcategory/${categoryId}`]);
+          console.log('GOOD1');
 
-  
-
+      },
+      (error) => {
+        console.error("Error fetching subcategories:", error);
+      }
+    );
+  }
 }

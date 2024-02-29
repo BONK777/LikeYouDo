@@ -1,5 +1,13 @@
-<div class="sub-category-list-container" *ngFor="let subCategory of subCategories">
-  <div class="sub-category-card">
-    <a class="category-link" routerLink="/question" (click)="selectSubcategory(subCategory)">{{ subCategory.attributes.name }}</a>
-  </div>
-</div>
+<main *ngIf="subcategory">
+    <h2 routerLink="/question">Для {{ subcategory.name }}</h2>
+      <ul class="content" *ngIf="subcategory.subcategories.length > 0">
+        <li class="card" *ngFor="let sub of subcategory.subcategories">
+          <div class="info-card">
+            <h4 (click)="selectSubcategory(sub)" routerLink="/question">{{ sub.name }}</h4>
+            <img [src]="sub.image" alt="{{ sub.name }}">
+          </div>
+          <button (click)="selectSubcategory(sub)" class="btn-card" routerLink="/question">Больше</button>
+        </li>
+      </ul>
+    <p *ngIf="subcategory.subcategories.length === 0">No subcategories available.</p>
+</main>

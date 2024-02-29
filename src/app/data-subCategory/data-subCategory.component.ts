@@ -1,9 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { CategoryService } from '../services/custome.interceptor';
 import { DataService } from '../services/data.service';
-import {Task} from '../model/task.model'
-
+import { Task } from '../model/task.model';
 
 @Component({
   selector: 'app-data-subCategory',
@@ -11,48 +9,41 @@ import {Task} from '../model/task.model'
   styleUrls: ['./data-subCategory.component.css']
 })
 export class DataSubCategoryComponent implements OnInit {
+  subcategory: any;
+  categoryID: any;
+  task: Task = { description: '', answerFormat: '', subcategory: '', term: '' };
 
-  subCategories: any[] = [];
-  categoryId!: number;
-  subCategoryId!: number;
-  @Input() subCategory: any;
-
-
-  constructor(
-    private categoryService: CategoryService,
-    private route: ActivatedRoute,
-    private dataService: DataService
-  ) {}
+  constructor(private route: ActivatedRoute, private dataService: DataService) {}
 
   ngOnInit() {
-    this.categoryId = this.route.snapshot.params['categoryId'];
-    this.subCategories = this.categoryService.getSubCategories(this.categoryId)
-    console.log(this.subCategories);
+    this.categoryID = this.route.snapshot.paramMap.get("id");
+    this.loadSubcategory(this.categoryID);
   }
 
-  selectSubcategory(subCategory: any): void {
-    // Получаем текущий объект таска
-    const currentTask: Task = this.dataService.getTask();
-
-    // Проверяем, есть ли уже подкатегория в объекте таска
-    if (!currentTask.attributes.subCategory) {
-      currentTask.attributes.subCategory = {
-        data: {
-          id: subCategory.id,
-          attributes: {
-            name: subCategory.attributes.name,
-          },
-        },
-      };
-    } else {
-      // Если уже есть, обновляем ее значения
-      currentTask.attributes.subCategory.data.id = subCategory.id;
-      currentTask.attributes.subCategory.data.attributes.name = subCategory.attributes.name;
-    }
-
-    // Сохраняем обновленный объект таска в сервисе данных
-    this.dataService.setTask(currentTask);
-    console.log('Current Task:', this.dataService.getTask());
+  loadSubcategory(categoryId: string) {
+    this.dataService.getSubcategories(categoryId).subscribe(
+      (response) => {
+        this.subcategory = response;
+        console.log('GOOD2');
+      },
+      (error) => {
+        console.error("Error fetching subcategory:", error);
+      }
+    );
   }
+
+// DataSubCategoryComponent
+selectSubcategory(subcategory: any) {
+  this.task.subcategory = subcategory.name;
+  this.dataService.setSelectedTask(this.task);
+  this.dataService.setSelectedSubcategory(subcategory);
+  this.dataService.setSelectedSubcategory(subcategory); 
+
+  console.log('Выбрали:', subcategory);
+  console.log('Записали в:', this.task);
+  console.log('Обновленный:', this.task);
+}
+
+
 
 }

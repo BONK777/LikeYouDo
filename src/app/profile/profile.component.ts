@@ -9,7 +9,30 @@ import { Task } from '../model/task.model';
 })
 export class ProfileComponent implements OnInit {
 
+  performerData: { name: string, contacts: string } | null = null;
+
+  constructor(private authService: DataService) { }
+
 
   ngOnInit() {
+    this.authService.performerData$.subscribe((data) => {
+      this.performerData = data;
+    });
+    this.loadTasks();
+
+  }
+
+  tasks: any[] = [];  // Определите свойство tasks
+
+  loadTasks() {
+    this.authService.getTasks().subscribe(
+      (tasks) => {
+        this.tasks = tasks;  // Присвойте полученные задачи свойству tasks
+        console.log('Полученные задачи:', this.tasks);
+      },
+      (error) => {
+        console.error('Ошибка при получении задач:', error);
+      }
+    );
   }
 }

@@ -1,14 +1,14 @@
 <div class="header__wrapper">
   <header></header>
   <div class="cols__container">
-    <div class="left__col">
+    <div class="left__col" *ngIf="performerData">
       <div class="img__container">
         <img src="../../assets/pic/account.png" alt="Anna Smith" />
         <span></span>
       </div>
-      <h2>Кирилл Креминский</h2>
+      <h2>{{ performerData.name }}</h2>
       <p>Астролог</p>
-      <p>kirill@test.com</p>
+      <p>{{ performerData.contacts }}</p>
 
       <ul class="about">
         <li><span>4,073</span>Followers</li>
@@ -44,11 +44,8 @@
 
       <div class="photos">
         <div class="profile__item">
-          <app-task></app-task>
-          <app-task></app-task>
-          <app-task></app-task>
-          <!-- <app-task-card [task]="task"></app-task-card> -->
-          <!-- <button (click)="updateTask()" class="remove">Обновить Task</button> -->
+          <app-task *ngFor="let task of tasks" [task]="task"></app-task>
+          <!-- <button class="remove">Обновить Task</button> -->
         </div>
       </div>
     </div>

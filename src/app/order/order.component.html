@@ -1,0 +1,28 @@
+<!-- order.component.html -->
+<main>
+  <div class="order-details" [class.status-pending]="order.status === 'pending'" [class.status-accepted]="order.status === 'accepted'" [class.status-completed]="order.status === 'completed'" [class.status-rejected]="order.status === 'rejected'">
+    <div class="status-marker"></div>
+    <h2>{{ taskData?.description }}</h2>
+    <p>Дата и время создания: {{ order.createdAt | date:'medium' }}</p>
+
+    <div class="performer-info">
+      <h3>Исполнитель</h3>
+      <p>Имя: {{ order.performer.name }}</p>
+      <p>Специализация: {{ order.performer.specialization }}</p>
+      <p>Контакты: {{ order.performer.contacts }}</p>
+    </div>
+
+    <div class="status-selector">
+      <label for="status">Статус заказа:</label>
+      <select id="status" [(ngModel)]="order.status">
+        <option value="pending">В ожидании принятия</option>
+        <option value="accepted">Принят исполнителем</option>
+        <option value="completed">Выполнен исполнителем</option>
+        <option value="rejected">Отказан исполнителем</option>
+      </select>
+    </div>
+
+    <button (click)="completeOrder()">Завершить заказ</button>
+    <button (click)="cancelOrder()">Отменить заказ</button>
+  </div>
+</main>
