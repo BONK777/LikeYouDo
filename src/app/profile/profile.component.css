@@ -137,49 +137,6 @@
   .header__wrapper .cols__container .content ul i {
     font-size: 1.3rem;
   }
-  .header__wrapper .cols__container .right__col nav {
-    display: flex;
-    align-items: center;
-    padding: 30px 0;
-    justify-content: space-between;
-    flex-direction: column;
-  }
-  .header__wrapper .cols__container .right__col nav ul {
-    display: flex;
-    gap: 20px;
-    flex-direction: column;
-  }
-  .header__wrapper .cols__container .right__col nav ul li a {
-    text-transform: uppercase;
-    color: #818181;
-  }
-  .header__wrapper .cols__container .right__col nav ul li:nth-child(1) a {
-      color: ghostwhite;
-      font-weight: 600;
-  }
-  .header__wrapper .cols__container .right__col nav button {
-    background: #0091ff;
-    color: #fff;
-    border: none;
-    padding: 10px 25px;
-    border-radius: 4px;
-    cursor: pointer;
-    margin-top: 20px;
-  }
-  .header__wrapper .cols__container .right__col nav button:hover {
-    opacity: 0.8;
-  }
-  .header__wrapper .cols__container .right__col .photos {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
-    gap: 20px;
-  }
-  .header__wrapper .cols__container .right__col .photos img {
-    max-width: 100%;
-    display: block;
-    height: 100%;
-    object-fit: cover;
-  }
 
   .task-list {
     display: flex;
@@ -219,26 +176,11 @@
     .header__wrapper .cols__container .left__col {
       padding: 25px 0px;
     }
-    .header__wrapper .cols__container .right__col nav ul {
-      flex-direction: row;
-      gap: 30px;
-    }
-    .header__wrapper .cols__container .right__col .photos {
-      height: 365px;
-      overflow: auto;
-      padding: 0 0 30px;
-    }
   }
   
   @media (min-width: 1017px) {
     .header__wrapper .cols__container .left__col {
       margin: 0;
       margin-right: auto;
-    }
-    .header__wrapper .cols__container .right__col nav {
-      flex-direction: row;
-    }
-    .header__wrapper .cols__container .right__col nav button {
-      margin-top: 0;
     }
   }
