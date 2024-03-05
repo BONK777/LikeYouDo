@@ -32,7 +32,6 @@ export class DataSubCategoryComponent implements OnInit {
     );
   }
 
-// DataSubCategoryComponent
 selectSubcategory(subcategory: any) {
   this.task.subcategory = subcategory.name;
   this.dataService.setSelectedTask(this.task);
@@ -43,7 +42,4 @@ selectSubcategory(subcategory: any) {
   console.log('Записали в:', this.task);
   console.log('Обновленный:', this.task);
 }
-
-
-
 }

@@ -11,6 +11,7 @@ export class AuthForPerformerComponent implements OnInit {
 
   public name: string = '';
   public link: string = '';
+  public registrationResponse: any;  // Добавленное свойство для сохранения ответа сервера
 
   constructor(private authService: DataService, private router: Router) { }
 
@@ -19,11 +20,14 @@ export class AuthForPerformerComponent implements OnInit {
 
   submitForm() {
     const formData = { name: this.name, contacts: this.link };
-
+  
     this.authService.registerPerformer(formData).subscribe(
       (response: any) => {
         console.log('Ответ сервера:', response);
-        const accessKey = response.accessKey;
+        const receivedToken = response
+        console.log('Полученный токен:', receivedToken);
+        this.authService.setPerformerAccessKey(receivedToken);
+
         this.authService.setPerformerData(formData);
         this.router.navigate(['/profile']);
       },
@@ -32,4 +36,5 @@ export class AuthForPerformerComponent implements OnInit {
       }
     );
   }
+  
 }

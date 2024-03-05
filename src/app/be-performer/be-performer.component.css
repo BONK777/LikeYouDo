@@ -10,7 +10,6 @@ main {
 	-ms-align-items: center;
 	align-items: flex-start;
 	position: relative;
-	/* z-index: -1; */
     flex-direction: column;
     padding: 0 0 0 60px;
 
@@ -54,23 +53,23 @@ h2{
     font-weight: 400;
 }
 p {
-font-size: 1.5rem;
-margin: 0;
+    font-size: 1.5rem;
+    margin: 0;
 }
 .more {
-border: none;
-width: 200px;
-height: 50px;
-background-color: #fff;
-border-radius: 1px;
-font-size: 1.25rem;
-color: #333;
-transition: .3s;
-cursor: pointer;
-z-index: 1;
+    border: none;
+    width: 200px;
+    height: 50px;
+    background-color: #fff;
+    border-radius: 1px;
+    font-size: 1.25rem;
+    color: #333;
+    transition: .3s;
+    cursor: pointer;
+    z-index: 1;
 }
 .more:hover {
-background-color: #bababa;
+    background-color: #bababa;
 }
 
 @media only screen and (max-width : 400px) {

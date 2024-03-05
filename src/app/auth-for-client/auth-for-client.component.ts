@@ -18,21 +18,13 @@ export class AuthForClientComponent implements OnInit {
   }
 
   submitForm() {
-    // console.log('name:', this.name);
-    // console.log('link:', this.link);
-
-    // if (!this.name || !this.link) {
-    //   console.error('name или link не заданы');
-    //   return;
-    // }
-
     const formData = { name: this.name, contacts: this.link };
 
     this.authService.registerClient(formData).subscribe(
       (response: any) => {
         console.log('Ответ сервера:', response);
         const accessKey = response.accessKey;
-        this.authService.setAccessKey(accessKey);
+        this.authService.setClientAccessKey(accessKey);
         this.router.navigate(['/home']);
       },
       (error: any) => {

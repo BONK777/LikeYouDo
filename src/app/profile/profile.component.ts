@@ -19,15 +19,14 @@ export class ProfileComponent implements OnInit {
       this.performerData = data;
     });
     this.loadTasks();
-
   }
 
-  tasks: any[] = [];  // Определите свойство tasks
+  tasks: any[] = [];  
 
   loadTasks() {
     this.authService.getTasks().subscribe(
       (tasks) => {
-        this.tasks = tasks;  // Присвойте полученные задачи свойству tasks
+        this.tasks = tasks;  
         console.log('Полученные задачи:', this.tasks);
       },
       (error) => {

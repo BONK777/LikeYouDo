@@ -36,7 +36,6 @@ const routes: Routes = [
   {path: "auth-client", component: AuthForClientComponent},
   {path: "auth-performer", component: AuthForPerformerComponent},
   {path: "category", component: CategoryComponent},
-  // {path: "subcategory", component: SubcategoryComponent},
   {path: "question", component: QuestionComponent},
   {path: "feedback", component: FeedbackComponent},
   {path: "type-feedback", component: TypeFeedbackComponent},

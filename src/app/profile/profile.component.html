@@ -22,32 +22,10 @@
           erat volutpat. Morbi imperdiet, mauris ac auctor dictum, nisl
           ligula egestas nulla.
         </p>
-
-        <div>
-          <a style="background-image: url('');"></a>
-          <a style="background-image: url('');"></a>
-          <a style="background-image: url('');"></a>
-          <a style="background-image: url('');"></a>
-        </div>
       </div>
     </div>
     <div class="right__col">
-      <nav>
-        <ul>
-          <li><a href="">Созданные задания</a></li>
-          <li><a href="">Задания в работе</a></li>
-          <li><a href="">lorem</a></li>
-          <li><a href="">lorem</a></li>
-        </ul>
-        <button>Add project</button>
-      </nav>
-
-      <div class="photos">
-        <div class="profile__item">
-          <app-task *ngFor="let task of tasks" [task]="task"></app-task>
-          <!-- <button class="remove">Обновить Task</button> -->
-        </div>
-      </div>
+      <app-task *ngFor="let task of tasks" [task]="task"></app-task>
     </div>
   </div>
 </div>

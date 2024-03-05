@@ -10,7 +10,6 @@
 	-ms-align-items: center;
 	align-items: center;
 	position: relative;
-	/* z-index: -1; */
     gap: 50px;
     flex-direction: column;
 }

@@ -2,7 +2,7 @@
 import { Injectable } from '@angular/core';
 import { Task } from '../model/task.model'
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { catchError, map, Observable, throwError } from 'rxjs';
 import { BehaviorSubject } from 'rxjs';
 
 
@@ -23,12 +23,16 @@ export class DataService {
     public selectedTask$ = this.selectedTaskSubject.asObservable();
 
     private performerDataSubject = new BehaviorSubject<{ name: string, contacts: string } | null>(null);
-    public performerData$ = this.performerDataSubject.asObservable();
+    performerData$ = this.performerDataSubject.asObservable();
+
+    private clientDataSubject = new BehaviorSubject<{ name: string, contacts: string } | null>(null);
+    public clientData$ = this.clientDataSubject.asObservable();
 
     private selectedSubcategorySubject = new BehaviorSubject<any | null>(null);
     public selectedSubcategory$ = this.selectedSubcategorySubject.asObservable();
 
-    private accessKey: string = '';
+    private clientAccessKey: string = '';
+    private performerAccessKey: string = '';
 
     private selectedSubcategory: any | null = null;
 
@@ -86,17 +90,33 @@ export class DataService {
         return this.selectedTask$;
       }
 
-      setAccessKey(key: string): void {
-        this.accessKey = key;
+      setClientAccessKey(key: string): void {
+        this.clientAccessKey = key;
       }
 
-      getAccessKey(): string {
-        return this.accessKey;
+      getClientAccessKey(): string {
+        return this.clientAccessKey;
       }
+
+      setPerformerAccessKey(accessKey: string): void {
+        console.log('Установлен токен:', accessKey);
+        this.performerAccessKey = accessKey;
+      }
+      
+
+      getPerformerAccessKey(): string {
+        const key = this.performerAccessKey;
+        if (!key) {
+          console.error('Токен авторизованного пользователя отсутствует.');
+        }
+        console.log('Токен авторизованного пользователя:', key);
+        return key;
+      }      
+      
 
       saveTaskToDatabase(task: Task): Observable<Task> {
-        // const authToken = this.getAccessKey();
-        const authToken = "gUIop2-Ze7Q7l-mmIvXe";
+        const authToken = this.getClientAccessKey();
+        // const authToken = "gUIop2-Ze7Q7l-mmIvXe";
 
         const headers = new HttpHeaders().set('Authorization', authToken);
 
@@ -110,4 +130,20 @@ export class DataService {
       getTasks(): Observable<any[]> {
         return this.http.get<any[]>(`${this.apiUrl}/tasks`);
       }
+
+      getClientInfo(clientId: string): Observable<any> {
+        return this.http.get<any>(`${this.apiUrl}/client?id=${clientId}`);
+      }
+
+      respondToTask(taskId: string): Observable<any> {
+        const authToken = this.getPerformerAccessKey();
+      
+        const headers = new HttpHeaders().set('Authorization', authToken);
+        const options = { headers: headers };
+        const requestBody = { "taskId": taskId };
+        console.log('токен авторизованного пользователя:', authToken);
+      
+        return this.http.post<any>(`${this.apiUrl}/performer/task`, requestBody, options);
+      }
+      
     }
