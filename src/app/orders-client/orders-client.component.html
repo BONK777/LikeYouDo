@@ -1,0 +1,28 @@
+<div *ngIf="clientData" class="client-data-container">
+  <div class="tasks-container">
+    <p class="tasks-heading">Ваши заказы:</p>
+    <div class="task-card" *ngFor="let task of clientData.tasks" [@fadeInOut]>
+      <div class="task-info">
+        <p class="task-description">Описание: {{ task.data.description }}</p>
+        <p class="task-performer">Исполнитель: {{ task.data.performer }}</p>
+        <p class="task-subcategory">Подкатегория: {{ task.data.subcategory }}</p>
+        <p class="task-term">Срок: {{ task.data.term }}</p>
+        <button class="show-candidates-btn" (click)="showCandidates(task.id)">Кто откликнулся</button>
+        <div *ngIf="task.showCandidates">
+          <p>Исполнители:</p>
+          <div class="performers-container">
+            <div class="performer-card" *ngFor="let candidate of task.candidates" (click)="respondToPerformer(candidate.performer, task.id)">
+              <div class="performer-info">
+                <p>{{ task.performerInfo[candidate.performer]?.name || 'Имя неизвестно' }}</p>
+              </div>
+            </div>
+          </div>
+        </div>                                     
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="!clientData">
+  <p>Загрузка...</p>
+</div>

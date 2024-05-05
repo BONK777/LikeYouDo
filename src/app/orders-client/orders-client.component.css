@@ -1,0 +1,85 @@
+.client-data-container {
+    color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .client-heading {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .tasks-container {
+    margin-top: 20px;
+  }
+  
+  .tasks-heading {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .task-card {
+    background-color: #283142;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+  
+  .task-info {
+    color: #fff;
+  }
+  
+  .task-description,
+  .task-performer,
+  .task-subcategory,
+  .task-term {
+    margin: 5px 0;
+  }
+  
+  .show-candidates-btn {
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background-color: #3498db;
+    border-radius: 5px;
+    color: #fff;
+  }
+
+  .performers-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  .performer-card {
+    width: 200px;
+    height: 100px;
+    background-color: #3498db;
+    color: #fff;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .performer-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .performer-info {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .performer-info p {
+    margin: 0;
+  }
+  

@@ -1,14 +1,14 @@
 <div class="header__wrapper">
   <header></header>
   <div class="cols__container">
-    <div class="left__col" *ngIf="performerData">
+    <div class="left__col" *ngIf="clientData">
       <div class="img__container">
         <img src="../../assets/pic/account.png" alt="Anna Smith" />
         <span></span>
       </div>
-      <h2>{{ performerData.login }}</h2>
+      <h2>{{ clientData.login }}</h2>
       <p>Астролог</p>
-      <p>{{ performerData.name }}</p>
+      <p>{{ clientData.name }}</p>
       <ul class="about">
         <li><span>4,073</span>Followers</li>
         <li><span>322</span>Following</li>
@@ -23,18 +23,7 @@
       </div>
     </div>
     <div class="right__col">
-      <ul class="tabs">
-        <li class="tab" (click)="selectedComponent = 'tasks'">Задачи</li>
-        <li class="tab" (click)="selectedComponent = 'active-task'">Активная задача</li>
-      </ul>
-    
-        <div *ngIf="selectedComponent === 'tasks'">
-          <app-task *ngFor="let task of tasks" [task]="task"></app-task>
-        </div>
-        <div *ngIf="selectedComponent === 'active-task'">
-          <app-active-task></app-active-task>
-        </div>
-      </div>
-    
+      <app-orders-client></app-orders-client>
+    </div>
   </div>
 </div>

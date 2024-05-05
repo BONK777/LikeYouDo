@@ -16,7 +16,7 @@ import { CallbackComponent } from './callback/callback.component';
 import { CreateAvatatComponent } from './create-avatat/create-avatat.component';
 import { SkillsComponent } from './skills/skills.component';
 import { SubskillsComponent } from './subskills/subskills.component';
-import { ProfileComponent } from './profile/profile.component';
+import { ProfilePerformerComponent } from './profile/profile.component';
 import { ErrComponent } from './404/404.component';
 import { DataCategoryComponent } from './data-category/data-category.component';
 import { DataSubCategoryComponent } from './data-subCategory/data-subCategory.component';
@@ -28,6 +28,14 @@ import { OrderComponent } from './order/order.component';
 import { AuthForClientComponent } from './auth-for-client/auth-for-client.component';
 import { AuthForPerformerComponent } from './auth-for-performer/auth-for-performer.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { LogInClientComponent } from './logIn-client/logIn-client.component';
+import { LogInPerformerComponent } from './logIn-performer/logIn-performer.component';
+import { ChatComponent } from './chat/chat.component';
+import { ProfileClientComponent } from './profile-client/profile-client.component';
+import { OrdersClientComponent } from './orders-client/orders-client.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
+import { ActiveTaskComponent } from './active-task/active-task.component';
+
 
 
 
@@ -35,29 +43,33 @@ const routes: Routes = [
   {path: "home", component: HomeComponent},
   {path: "auth-client", component: AuthForClientComponent},
   {path: "auth-performer", component: AuthForPerformerComponent},
+  {path: "logIn-client", component: LogInClientComponent},
+  {path: "logIn-performer", component: LogInPerformerComponent},
   {path: "category", component: CategoryComponent},
   {path: "question", component: QuestionComponent},
   {path: "feedback", component: FeedbackComponent},
-  {path: "type-feedback", component: TypeFeedbackComponent},
+  // {path: "type-feedback", component: TypeFeedbackComponent},
   {path: "be-performer", component: BePerformerComponent},
   // {path: "register", component: RegisterComponent},
   // {path: "callback", component: CallbackComponent},
   // {path: "avatar", component: CreateAvatatComponent},
   // {path: "skills", component: SkillsComponent},
   // {path: "subskills", component: SubskillsComponent},
-  {path: "profile", component: ProfileComponent},
+  {path: "profile", component: ProfilePerformerComponent},
+  {path: "profile-client", component: ProfileClientComponent},
   {path: "data-category", component: DataCategoryComponent},
   // {path: "data-subсategory", component: DataSubCategoryComponent },
   { path: 'data-subcategory/:id', component: DataSubCategoryComponent},
   // {path: "subcategory?id={subcategoryId}", component: DataSubCategoryComponent},
   {path: "select-performer", component: SelectPerformerComponent},
-  {path: "order", component: OrderComponent},
+  {path: "chat", component: ChatComponent},
+  // {path: "order", component: OrderComponent},
   {path: "**", component: ErrComponent}
   // { path: '', redirectTo: '/categories', pathMatch: 'full' }
 ]
 
 @NgModule({
-  declarations: [																										
+  declarations: [																																
     AppComponent,
       HomeComponent,
       CategoryComponent,
@@ -72,7 +84,7 @@ const routes: Routes = [
       CreateAvatatComponent,
       SkillsComponent,
       SubskillsComponent,
-      ProfileComponent,
+      ProfilePerformerComponent,
       ErrComponent,
       DataCategoryComponent,
       DataSubCategoryComponent,
@@ -80,7 +92,13 @@ const routes: Routes = [
       SelectPerformerComponent,
       OrderComponent,
       AuthForClientComponent,
-      AuthForPerformerComponent
+      AuthForPerformerComponent,
+      LogInClientComponent,
+      LogInPerformerComponent,
+      ChatComponent,
+      ProfileClientComponent,
+      OrdersClientComponent,
+      ActiveTaskComponent
    ],
   imports: [
     BrowserModule,
@@ -88,7 +106,8 @@ const routes: Routes = [
     RouterModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule
   ],
   providers: [DataService],
   bootstrap: [AppComponent]

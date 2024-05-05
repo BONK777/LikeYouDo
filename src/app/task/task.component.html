@@ -1,6 +1,46 @@
-<!-- <div class="task-card">
-  <h2>{{ task?.data?.Description }}</h2>
-  <p><strong>Subcategory:</strong> {{ task?.data?.Subcategory?.data?.attributes?.name }}</p>
-  <p><strong>Answer Format:</strong> {{ task?.data?.AnswerFormat }}</p>
-  <p><strong>Term:</strong> {{ task?.data?.Term }}</p>
+<!-- 
+<div class="client-data-container">
+  <div class="tasks-container">
+    <div class="task-card" (click)="toggleClientInfo()">
+      <div class="task-info">
+        <h2>{{ task?.data?.description }}</h2>
+        <p><strong>Подкатегория:</strong> {{ task?.data?.subcategory }}</p>
+        <p><strong>Срок:</strong> {{ task?.data?.term }}</p>
+      
+        <div *ngIf="showClientInfoFlag">
+          <h3>Информация о клиенте:</h3>
+          <p><strong>Имя:</strong> {{ clientInfo?.name }}</p>
+          <p><strong>Контакты:</strong> {{ clientInfo?.contacts }}</p>
+          <button (click)="respondToTask()">Откликнуться</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div *ngIf="clientData" class="client-data-container">
+  <div class="tasks-container">
+    <p class="tasks-heading">Ваши заказы:</p>
+    <div class="task-card" *ngFor="let task of clientData.tasks" [@fadeInOut]>
+      <div class="task-info">
+        <p class="task-description">Описание: {{ task.data.description }}</p>
+        <p class="task-performer">Исполнитель: {{ task.data.performer }}</p>
+        <p class="task-subcategory">Подкатегория: {{ task.data.subcategory }}</p>
+        <p class="task-term">Срок: {{ task.data.term }}</p>
+        <button class="show-candidates-btn" (click)="showCandidates(task)">Кто откликнулся</button>
+        <div *ngIf="task.showCandidates">
+          <p>Исполнители:</p>
+          <ul>
+            <li *ngFor="let candidate of task.candidates">{{ candidate.performer }}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="!clientData">
+  <p>Загрузка...</p>
 </div> -->

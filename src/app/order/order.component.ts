@@ -10,8 +10,8 @@ import { DataService } from '../services/data.service';
 export class OrderComponent implements OnInit {
 
   taskData: Task | null = null;
-  performerData: { name: string, contacts: string } | null = null;
-  clientData: { name: string, contacts: string } | null = null;
+  performerData: { name: string, login: string } | null = null;
+  clientData: { name: string, login: string } | null = null;
 
 
   constructor(private dataService: DataService) {}
@@ -33,11 +33,11 @@ export class OrderComponent implements OnInit {
     createdAt: new Date(),
     performer: {
       name: 'Имя исполнителя',
-      contacts: 'Контакты исполнителя'
+      login: 'Логин исполнителя'
     },
     client: {
       name: 'Имя заказчика',
-      contacts: 'Контакты заказчика'
+      login: 'Логин заказчика'
     },
     status: 'pending'
   };

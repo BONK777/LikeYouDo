@@ -11,6 +11,8 @@ import { Router } from '@angular/router';
 export class AuthForClientComponent implements OnInit {
   public name: string = '';
   public link: string = '';
+  public login: string = '';
+  public password: string = '';
 
   constructor(private authService: DataService, private router: Router) { }
 
@@ -18,18 +20,19 @@ export class AuthForClientComponent implements OnInit {
   }
 
   submitForm() {
-    const formData = { name: this.name, contacts: this.link };
+    const formData = {name: this.name, login: this.login, password: this.password };
 
     this.authService.registerClient(formData).subscribe(
       (response: any) => {
         console.log('Ответ сервера:', response);
-        const accessKey = response.accessKey;
+        const accessKey = response; 
         this.authService.setClientAccessKey(accessKey);
+        this.authService.setClientData(formData);
         this.router.navigate(['/home']);
-      },
-      (error: any) => {
-        console.error('Ошибка при регистрации клиента:', error);
-      }
+    },
+    (error: any) => {
+        console.error('Ошибка при авторизации:', error);
+    }
     );
   }
 }

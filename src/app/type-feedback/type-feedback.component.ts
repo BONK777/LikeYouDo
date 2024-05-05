@@ -11,47 +11,28 @@ import { Task } from '../model/task.model';
 export class TypeFeedbackComponent {
   constructor(private dataService: DataService, private router: Router) {}
 
-  // onSelectType(type: string) {
-  //   this.dataService.getSelectedTask().subscribe((currentTask) => {
-  //     if (currentTask) {
-  //       if (currentTask.answerFormat !== type) {
-  //         currentTask.answerFormat = type;
-
-  //         console.log('Обновленный Task (после выбора типа):', currentTask);
-
-  //         this.dataService.setSelectedTask(currentTask);
-
-  //         this.router.navigate(['/order']);
-  //       }
-  //     } else {
-  //       console.warn('Текущая задача не определена');
-  //     }
-  //   });
-  // }
-
-  onSelectType(type: string) {
-    this.dataService.getSelectedTask().subscribe((currentTask) => {
-      if (currentTask) {
-        if (currentTask.answerFormat !== type) {
-          currentTask.answerFormat = type;
+//   onSelectType(type: string) {
+//     this.dataService.getSelectedTask().subscribe((currentTask) => {
+//       if (currentTask) {
+//         if (currentTask.answerFormat !== type) {
+//           currentTask.answerFormat = type;
   
-          console.log('Обновленный Task (после выбора типа):', currentTask);
+//           console.log('Обновленный Task (после выбора типа):', currentTask);
   
-          this.dataService.saveTaskToDatabase(currentTask).subscribe(
-            (savedTask) => {
-              console.log('Задача успешно сохранена:', savedTask);
-            },
-            (error) => {
-              console.error('Ошибка при сохранении задачи:', error);
-            }
-          );
-  
-          this.router.navigate(['/order']);
-        }
-      } else {
-        console.warn('Текущая задача не определена');
-      }
-    });
-}
+//           this.dataService.saveTaskToDatabase(currentTask).subscribe(
+//             (savedTask) => {
+//               console.log('Задача успешно сохранена:', savedTask);
+//             },
+//             (error) => {
+//               console.error('Ошибка при сохранении задачи:', error);
+//             }
+//           );
+//           this.router.navigate(['/profile']);
+//         }
+//       } else {
+//         console.warn('Текущая задача не определена');
+//       }
+//     });
+// }
 
 }

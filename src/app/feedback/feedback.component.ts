@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { DataService } from '../services/data.service';
-import { Task } from '../model/task.model';
 import { Router } from '@angular/router';
-import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-feedback',
@@ -13,14 +11,24 @@ export class FeedbackComponent {
   constructor(private dataService: DataService, private router: Router) { }
 
   onSelectTerm(term: string) {
-    this.dataService.getSelectedTask()
-      .pipe(take(1))
-      .subscribe(currentTask => {
-        if (currentTask !== null && currentTask !== undefined) {
+    this.dataService.getSelectedTask().subscribe((currentTask) => {
+      if (currentTask) {
+        if (currentTask.term !== term) {
           currentTask.term = term;
-          this.dataService.setSelectedTask(currentTask);
-          this.router.navigate(['/type-feedback']);
+          console.log('Обновленный Task (после выбора термина):', currentTask);
+          this.dataService.saveTaskToDatabase(currentTask).subscribe(
+            (savedTask) => {
+              console.log('Задача успешно сохранена:', savedTask);
+            },
+            (error) => {
+              console.error('Ошибка при сохранении задачи:', error);
+            }
+          );
+          this.router.navigate(['/profile-client']);
         }
-      });
+      } else {
+        console.warn('Текущая задача не определена');
+      }
+    });
   }
 }

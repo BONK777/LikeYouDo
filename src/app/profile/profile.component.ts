@@ -7,9 +7,10 @@ import { Task } from '../model/task.model';
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
-export class ProfileComponent implements OnInit {
+export class ProfilePerformerComponent implements OnInit {
+  selectedComponent: string = 'tasks';
 
-  performerData: { name: string, contacts: string } | null = null;
+  performerData: { name: string, login: string } | null = null;
 
   constructor(private authService: DataService) { }
 

@@ -11,7 +11,7 @@ import { DataService } from '../services/data.service';
   styleUrls: ['./question.component.css']
 })
 export class QuestionComponent implements OnInit {
-  task: Task = { description: '', answerFormat: '', subcategory: '', term: '' };
+  task: Task = { description: '', subcategory: '', term: '' };
 
   constructor(private dataService: DataService, private router: Router) { }
 

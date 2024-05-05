@@ -11,7 +11,7 @@ import { Task } from '../model/task.model';
 export class DataSubCategoryComponent implements OnInit {
   subcategory: any;
   categoryID: any;
-  task: Task = { description: '', answerFormat: '', subcategory: '', term: '' };
+  task: Task = { description: '', subcategory: '', term: '' };
 
   constructor(private route: ActivatedRoute, private dataService: DataService) {}
 

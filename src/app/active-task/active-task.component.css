@@ -1,0 +1,53 @@
+.tasks-container {
+  padding: 20px;
+}
+
+.tasks-heading {
+  color: #fff;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.task-card {
+  background-color: #283142;
+  color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  animation: fadeInUp 0.5s ease both;
+}
+
+.task-info {
+  padding: 10px 0;
+}
+
+.task-description {
+  /* font-weight: bold; */
+  color: #3498db;
+}
+
+.task-subcategory, .task-term {
+  color: #fff;
+  font-size: 14px;
+}
+
+button {
+  padding: 8px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

@@ -1,0 +1,14 @@
+<div *ngIf="performerData && performerData.activeTasks.length > 0" class="tasks-container">
+  <div class="task-card" *ngFor="let task of performerData.activeTasks">
+    <div class="task-info">
+      <h3 class="task-description">Описание: {{ task.data.description }}</h3>
+      <p class="task-subcategory">Подкатегория: {{ task.data.subcategory }}</p>
+      <p class="task-term">Срок: {{ task.data.term }}</p>
+      <button>Откликнуться</button>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="performerData && performerData.activeTasks.length === 0">
+  <p>Нет активных задач</p>
+</div>
